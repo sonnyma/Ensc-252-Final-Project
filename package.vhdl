@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity fsm is
-port(clock_50: in std_logic;
+port(clk: in std_logic;
 	lights : buffer std_logic_vector(17 downto 0);
-	LEDR : out std_logic_vector(17 downto 0);
+	hex : out std_logic_vector(7 downto 0);
 	SW : in std_logic_vector(17 downto 0));			
 end fsm;
 
