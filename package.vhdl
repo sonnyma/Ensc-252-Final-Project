@@ -1,82 +1,13 @@
-library ieee;
-use ieee.std_logic_1164.all;
+USE work.definitions_package.all; 
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
+package definitions_package is
+-- Package Declaration Section (examples below)
+CONSTANT N : INTEGER := 8;
+TYPE bus_width IS ARRAY (0 to 2) OF UNSIGNED(N-1 DOWNTO 0);
+end package definitions_package;
+package body definitions_package is
+--blank, include any implementations here, if necessary
 
-entity fsm is
-port(clk: in std_logic;
-	lights : buffer std_logic_vector(17 downto 0);
-	hex : out std_logic_vector(7 downto 0);
-	SW : in std_logic_vector(17 downto 0));			
-end fsm;
-
-architecture behaviour of fsm is 
-    constant idle: std_logic_vector(17 downto 0):= "000000000000000000";
-    constant L1  : std_logic_vector(17 downto 0):= "000000111000000000";
-    constant L2  : std_logic_vector(17 downto 0):= "000111111000000000";
-    constant L3  : std_logic_vector(17 downto 0):= "111111111000000000";
-    constant R1  : std_logic_vector(17 downto 0):= "000000000111000000";
-    constant R2  : std_logic_vector(17 downto 0):= "000000000111111000";
-    constant R3  : std_logic_vector(17 downto 0):= "000000000111111111";
-	constant H1  : std_logic_vector(17 downto 0):= "000000111111000000";
-    constant H2  : std_logic_vector(17 downto 0):= "000111111111111000";
-    constant H3  : std_logic_vector(17 downto 0):= "111111111111111111";
-	signal clk : std_logic;
-    signal leftinput : std_logic;
-	signal rightinput : std_logic;
-	signal rst : std_logic;
-	 
-	component PreScale is
-        port (Clkin   : in std_logic;
-		    Clkout   : out std_logic);
-	end component;
-
-	 begin
-	 	rst <= SW(17);
-		leftinput <= SW(1);
-		rightinput <= SW(0);
-        process (clk)
-        begin
-            if rising_edge(clk) and clk = '1' then 
-                if rst = '1' then
-                    lights <= idle;
-                else 
-                    case lights is 
-                        when IDLE =>
-                            if leftinput = '1' and rightinput = '1' then 
-                                lights <= H1;
-                            elsif leftinput = '1' then 
-                                lights <= L1;
-                            elsif rightinput = '1' then 
-                                lights <= R1;
-                            else
-                                lights <= idle;
-                            end if;
-                        when L1 =>
-                            lights <= L2;
-                        when L2 =>
-                            lights <= L3;
-                        when L3 =>
-                            lights <= idle;
-                        when R1 =>
-                            lights <= R2;
-                        when R2 =>
-                            lights <= R3;
-                        when R3 =>
-                            lights <= idle;
-                        when H1 =>
-                            lights <= H2;
-                        when H2 =>
-                            lights <= H3;
-                        when H3 =>
-                            lights <= idle;
-                        when others =>
-                            lights <= idle;
-                    end case;
-                end if;
-            end if;
-        end process;
-
-	ledr(17 downto 0) <= lights(17 downto 0);
-	
-	Prescaler : PreScale port map(Clkin => clock_50, Clkout => clk);		  
-		  
-    end behaviour;
+end package body definitions_package;
