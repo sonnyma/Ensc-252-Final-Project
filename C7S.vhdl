@@ -13,9 +13,20 @@ architecture rtl of C7S is
 
 begin
 
-    Y <= "0001111" when D = "0000" else --snakehead
+    Y <= "0001111" when D = "0000" else --snakeheadf
+        "1110001" when D = "0010" else --snaketailf
+        "1000111" when D = "0000" else --snakeheadb
+        "0111001" when D = "0010" else --snaketailb
         "0001001" when D = "0001" else --snakebody
-        "1110001" when D = "0010" else --snaketail
+        "1111110" when D = "0011" else --fly1
+        "1111101" when D = "0100" else --fly2
+        "0111111" when D = "0101" else --fly3
+        "1011111" when D = "0110" else --fly4
+        "1111110" when D = "0111" else --fly5
+        "1111011" when D = "1000" else --fly6
+        "1110111" when D = "1001" else --fly7
+        "1101111" when D = "1010" else --fly8
+        "1111110" when D = "1010" else --fly9
         "0001000" when D = "0011" else --a
         "1100000" when D = "0100" else --b
         "1110010" when D = "0101" else --c
