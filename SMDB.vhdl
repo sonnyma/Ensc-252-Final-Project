@@ -4,9 +4,11 @@ use ieee.numeric_std.all;
 
 entity SMDB is
     port (
-        clk, rst : in std_logic;
+        clock_50, rst : in std_logic;
         SW : in std_logic_vector(17 downto 0);
-        HEX : out std_logic_vector(7 downto 0)
+        HEX : out std_logic_vector(7 downto 0);
+        LEDG : out std_logic_vector(7 downto 0);
+        LEDR : out std_logic_vector(17 downto 0)
     );
 end SMDB;
 
@@ -21,9 +23,11 @@ begin
         NOTHING HAPPENS;
     end if;
 
-    process (clock, )
-
-    end if;
+    process (clock_50, KEY(3))
+        if (KEY(0) = '0')
+            C0: prescaler port map(clk <= clock_50, clk => clock);
+        end if;
+    end process;
 
     Y0 <= a;
     Y1 <= a;
@@ -41,6 +45,7 @@ begin
     H5: disphex PORT MAP(Y5 => HEX(5));
     H6: disphex PORT MAP(Y6 => HEX(6));
 
+    process(KEY())
     C0: prescaler PORT MAP(clk => clkin, clkout => clock);
 
 end architecture;
