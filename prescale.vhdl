@@ -1,4 +1,7 @@
+LIBRARY ieee;
 use work.definitions_package.all;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
 entity prescale is
     port (clk   : in std_logic;
@@ -8,13 +11,13 @@ end prescale;
 
 architecture rtl of prescale is
 
-signal count : std_logic_vector(19 downto 0) := (others => '0');
+signal count : unsigned(19 downto 0) := (others => '0');
 
 begin
 
     process (clk,mode)
     begin
-        if rising_edge (clk) and mode = "01" then -- normal speed
+        if rising_edge (clk) and mode = "00" then -- normal speed
             count <= count + 1;
         end if;
 		if rising_edge (clk) and mode = "01" then -- slow speed

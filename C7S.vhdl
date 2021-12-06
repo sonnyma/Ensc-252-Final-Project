@@ -1,8 +1,11 @@
+LIBRARY ieee;
 use work.definitions_package.all;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
 entity C7S is
     port (
-        D : in std_logic_vector(3 downto 0);
+        D : in std_logic_vector(4 downto 0);
         Y : out std_logic_vector(6 downto 0)
     );
 end C7S;

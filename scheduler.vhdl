@@ -1,4 +1,7 @@
+LIBRARY ieee;
 use work.definitions_package.all;
+USE ieee.std_logic_1164.all;
+USE ieee.numeric_std.all;
 
 entity scheduler is
     port (
@@ -39,7 +42,6 @@ begin
                 end if;
             end if;
         end if;
-
-        cu: controlunit port map (stuff);
+	end process;
     
 end behaviour;
