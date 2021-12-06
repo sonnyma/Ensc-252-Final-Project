@@ -4,7 +4,7 @@ entity controlunit is
     port (
         clk, rst, hard_rst : in std_logic;
         inst : in std_logic_vector(2 downto 0);
-        toSeg : out std_logic_vector(39 downto 0)
+        toSeg : out arr8x5
     );
 end controlunit;
 
