@@ -1,4 +1,4 @@
-USE work.definitions_package.all;
+use work.definitions_package.all;
 
 entity asip is
     port (

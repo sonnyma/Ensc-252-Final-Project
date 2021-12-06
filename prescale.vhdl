@@ -1,12 +1,16 @@
+<<<<<<< HEAD
 USE work.definitions_package.all;
+=======
+use work.definitions_package.all;
+>>>>>>> ffe64110af48e297c94a6d62bd083ae0992e056d
 
-entity PreScale is
+entity prescale is
     port (clk   : in std_logic;
 	    mode	: in std_logic_vector(1 downto 0);
 		clk_out   : out std_logic);
-end PreScale;
+end prescale;
 
-architecture arch of PreScale is
+architecture rtl of prescale is
 
 signal count : std_logic_vector(19 downto 0) := (others => '0');
 
@@ -29,4 +33,4 @@ begin
     clk_out <= count (19);
     end process;
 
-end arch;
+end architecture;

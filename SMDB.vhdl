@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 USE work.definitions_package.all;
+=======
+use work.definitions_package.all;
+>>>>>>> ffe64110af48e297c94a6d62bd083ae0992e056d
 
 entity SMDB is
     port (
@@ -15,6 +19,32 @@ architecture rtl of SMDB is
     signal clock : std_logic;
     signal choice : std_logic_vector();
 
+    component asip is
+        port (
+            clk, rst, hard_rst, stop_prog: in std_logic;
+            program : in std_logic_vector();
+            to_hex : out std_logic_vector()
+        );
+    end component;
+
+    component debouncer is
+        generic (
+          timeout_cycles : positive
+          );
+        port (
+          clk : in std_logic;
+          rst : in std_logic;
+          switch : in std_logic;
+          switch_debounced : out std_logic
+        );
+    end component; 
+
+    component prescale is
+        port (clk   : in std_logic;
+            mode	: in std_logic_vector(1 downto 0);
+            clk_out   : out std_logic);
+    end component;
+
 begin
 
     if (ALL OFF)
@@ -22,28 +52,12 @@ begin
     end if;
 
     process (clock_50, KEY(3))
-        if (KEY(0) = '0')
+        if (KEY(3) = '0')
             C0: prescaler port map(clk <= clock_50, clk => clock);
         end if;
     end process;
 
-    Y0 <= a;
-    Y1 <= a;
-    Y2 <= a;
-    Y3 <= a;
-    Y4 <= a;
-    Y5 <= a;
-    Y6 <= a;
+    s0 : scheduler port map(stuff);
 
-    H0: disphex PORT MAP(, Y0 => HEX(0));
-    H1: disphex PORT MAP(Y1 => HEX(1));
-    H2: disphex PORT MAP(Y2 => HEX(2));
-    H3: disphex PORT MAP(Y3 => HEX(3));
-    H4: disphex PORT MAP(Y4 => HEX(4));
-    H5: disphex PORT MAP(Y5 => HEX(5));
-    H6: disphex PORT MAP(Y6 => HEX(6));
-
-    process(KEY())
-    C0: prescaler PORT MAP(clk => clkin, clkout => clock);
-
+    LEDG <= pce;
 end architecture;
