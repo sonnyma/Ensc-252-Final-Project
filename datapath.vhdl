@@ -19,16 +19,18 @@ architecture rtl of datapath is
             );
     end component;
 
-begin
-    process(program)
-        if program = "0001" then
-            pce <= pce + 1;
-        elsif program = "0010" then
-            pce <= pce + 1;
-        elsif program = "0100" then
-            pce <= pce + 1;
-        elsif program = "1000" then
-            pce <= pce + 1;
+    begin
+    process(clk)
+        if falling_edge(clk) then
+            if program = "0001" then
+                pce <= pce + 1;
+            elsif program = "0010" then
+                pce <= pce + 1;
+            elsif program = "0100" then
+                pce <= pce + 1;
+            elsif program = "1000" then
+                pce <= pce + 1;
+            end if;
         end if;
     end process;
     scheduler: scheduler port map (clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program);
