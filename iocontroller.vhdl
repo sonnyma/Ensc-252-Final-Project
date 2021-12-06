@@ -1,6 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use work.definitions_package.all;
 
 entity iocontroller is
     port (
@@ -10,12 +8,14 @@ entity iocontroller is
 end entity;
 
 architecture rtl of iocontroller is
+
     component C7S is
         port (
             D : in std_logic_vector(4 downto 0);
             Y : out std_logic_vector(6 downto 0)
         );
     end component;
+
     begin
     seg0: c7s port map(D <= toSeg(4 downto 0), Y <= to_hex(6 downto 0));
     seg1: c7s port map(D <= toSeg(9 downto 5), Y <= to_hex(13 downto 7));
