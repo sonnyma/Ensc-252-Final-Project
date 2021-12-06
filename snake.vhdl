@@ -1,5 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
+USE work.definitions_package.all;
 
 entity fsm is
 port(clock_50: in std_logic;

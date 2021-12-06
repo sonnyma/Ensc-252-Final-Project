@@ -1,6 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+USE work.definitions_package.all;
 
 entity C7S is
     port (

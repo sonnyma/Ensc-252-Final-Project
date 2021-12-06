@@ -1,6 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+USE work.definitions_package.all;
 
 entity datapath is
     port (
@@ -33,6 +31,6 @@ begin
             pce <= pce + 1;
         end if;
     end process;
-    scheduler: scheduler port map (clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program)
+    scheduler: scheduler port map (clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program);
 
 end architecture;

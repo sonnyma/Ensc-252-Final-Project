@@ -1,6 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+USE work.definitions_package.all;
 
 entity PreScale is
     port (clk   : in std_logic;
