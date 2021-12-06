@@ -29,13 +29,13 @@ architecture rtl of asip is
 
     component iocontroller is
         port (
-            toSeg : in std_logic_vector(255 downto 0);
-            to_hex : out std_logic_vector()
+            toSeg : in std_logic_vector(arr8x5);
+            to_hex : out std_logic_vector(55 downto 0)
         );
     end component;
     
     signal outinst(5 downto 0);
-    signal outSeg(39 downto 0);
+    signal outSeg(arr8x5);
 
     begin
     datapath: datapath port map(clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program , inst <= outinst);
