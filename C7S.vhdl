@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+USE work.definitions_package.all;
+=======
 use work.definitions_package.all;
+>>>>>>> ffe64110af48e297c94a6d62bd083ae0992e056d
 
 entity C7S is
     port (

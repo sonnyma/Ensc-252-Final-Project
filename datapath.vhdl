@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+USE work.definitions_package.all;
+=======
 use work.definitions_package.all;
+>>>>>>> ffe64110af48e297c94a6d62bd083ae0992e056d
 
 entity datapath is
     port (
@@ -31,6 +35,6 @@ begin
             pce <= pce + 1;
         end if;
     end process;
-    scheduler: scheduler port map (clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program)
+    scheduler: scheduler port map (clk <= clk, rst <= rst, hard_rst <= hard_rst, stop_prog <= stop_prog, program <= program);
 
 end architecture;
