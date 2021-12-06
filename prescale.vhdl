@@ -1,14 +1,12 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+use work.definitions_package.all;
 
-entity PreScale is
+entity prescale is
     port (clk   : in std_logic;
 	    mode	: in std_logic_vector(1 downto 0);
 		clk_out   : out std_logic);
-end PreScale;
+end prescale;
 
-architecture arch of PreScale is
+architecture rtl of prescale is
 
 signal count : std_logic_vector(19 downto 0) := (others => '0');
 
@@ -31,4 +29,4 @@ begin
     clk_out <= count (19);
     end process;
 
-end arch;
+end architecture;

@@ -1,6 +1,4 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+use work.definitions_package.all;
 
 entity scheduler is
     port (
@@ -24,16 +22,16 @@ begin
             else
                 pce <= '0';
                 if program = "0001" then
-                    --program 1
+                    --program 1 (message)
                     inst_out <= "001";
                 elsif program = "0010" then
-                    --program 2
+                    --program 2 (snake to left)
                     inst_out <= "010";
                 elsif program = "0100" then
-                    --program 3
+                    --program 3 (snake to right)
                     inst_out <= "011";
                 elsif program = "1000" then
-                    --program 4
+                    --program 4 (fly)
                     inst_out <= "100";
                 else
                     --do nothing
@@ -41,4 +39,7 @@ begin
                 end if;
             end if;
         end if;
+
+        cu: controlunit port map (stuff);
+    
 end behaviour;
