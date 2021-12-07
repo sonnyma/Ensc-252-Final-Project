@@ -12,7 +12,8 @@ end entity;
 
 architecture rtl of iocontroller is
 	
-    component C7S is
+	 --component of c7s
+    component c7s is
         port (
             D : in std_logic_vector(4 downto 0);
             Y : out std_logic_vector(6 downto 0)
@@ -20,6 +21,8 @@ architecture rtl of iocontroller is
     end component;
 
     begin
+	 
+	 --port maps to custom 7 segments
     seg0: c7s port map(D => toSeg(0), Y => to_hex(0));
     seg1: c7s port map(D => toSeg(1), Y => to_hex(1));
     seg2: c7s port map(D => toSeg(2), Y => to_hex(2));
@@ -28,4 +31,5 @@ architecture rtl of iocontroller is
     seg5: c7s port map(D => toSeg(5), Y => to_hex(5));
     seg6: c7s port map(D => toSeg(6), Y => to_hex(6));
     seg7: c7s port map(D => toSeg(7), Y => to_hex(7));
+	 
 end architecture;
