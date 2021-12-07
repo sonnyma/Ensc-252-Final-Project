@@ -11,16 +11,16 @@ end prescale;
 
 architecture rtl of prescale is
 
-signal count : unsigned(19 downto 0) := (others => '0');
+signal count : unsigned(24 downto 0) := (others => '0');
 
 begin
 
     process (clk,mode)
     begin
-        if rising_edge (clk) and mode = "00" then -- normal speed
+        if rising_edge (clk) and mode = "01" then -- slow speed
             count <= count + 1;
         end if;
-		if rising_edge (clk) and mode = "01" then -- slow speed
+		if rising_edge (clk) and mode = "00" then -- normal speed
             count <= count + 2;
         end if;
 		if rising_edge (clk) and mode = "10" then -- fast speed
@@ -29,7 +29,7 @@ begin
 		if rising_edge (clk) and mode = "11" then -- very fast speed
             count <= count + 4;
         end if;
-    clk_out <= count (19);
+    clk_out <= count(24); --looks at most significant bit
     end process;
 
 end architecture;
